@@ -1,6 +1,10 @@
 from fastapi import FastAPI
-from .routes import router
+from app.routes import router
 
-app = FastAPI(title="Scalable URL Shortener")
+app = FastAPI()
 
 app.include_router(router)
+
+@app.get("/")
+def home():
+    return {"message": "URL Shortener is running"}
